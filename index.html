@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ancient Hunter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>Ancient Hunter</h1>
+            <div class="game-stats">
+                <span>Battle: <span id="battle-count">0</span></span>
+            </div>
+        </div>
+        
+        <div class="game-content">
+            <div class="game-notification">
+                <p id="game-text">Selamat datang di Ancient Hunter!</p>
+            </div>
+            
+            <div id="start-section">
+                <button id="start-button" onclick="mulaiGame()">Mulai Petualangan</button>
+            </div>
+
+            <div id="pilihan-karakter" style="display: none;">
+                <h2>Pilih Karakter untuk Bertarung:</h2>
+                <div class="character-selection">
+                    <button onclick="pilihKarakter('Mage')">Mage</button>
+                    <button onclick="pilihKarakter('Knight')">Knight</button>
+                    <button onclick="pilihKarakter('Archer')">Archer</button>
+                    <button onclick="pilihKarakter('Healer')">Healer</button>
+                </div>
+            </div>
+
+            <div id="action-area">
+                <div id="action-buttons"></div>
+            </div>
+
+            <div id="status">
+                <div class="status-section">
+                    <h3>Tim Pemain</h3>
+                    <p><strong>Karakter Aktif:</strong> <span id="karakter-aktif">Tidak ada</span></p>
+                    
+                    <div class="character-stats" id="status-mage">
+                        <h4>Mage</h4>
+                        <div class="stat-bars">
+                            <div class="stat-bar">
+                                <span>HP: <span id="hp-mage">0</span>/<span id="max-hp-mage">0</span></span>
+                                <div class="bar-container">
+                                    <div class="hp-bar" id="hp-bar-mage"></div>
+                                </div>
+                            </div>
+                            <div class="stat-bar">
+                                <span>Mana: <span id="mana-mage">0</span>/<span id="max-mana-mage">0</span></span>
+                                <div class="bar-container">
+                                    <div class="mana-bar" id="mana-bar-mage"></div>
+                                </div>
+                            </div>
+                            <div class="stat-bar">
+                                <span>Level: <span id="level-mage">1</span> | EXP: <span id="exp-mage">0</span>/100</span>
+                                <div class="bar-container">
+                                    <div class="exp-bar" id="exp-bar-mage"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="character-stats" id="status-knight">
+                        <h4>Knight</h4>
+                        <div class="stat-bars">
+                            <div class="stat-bar">
+                                <span>HP: <span id="hp-knight">0</span>/<span id="max-hp-knight">0</span></span>
+                                <div class="bar-container">
+                                    <div class="hp-bar" id="hp-bar-knight"></div>
+                                </div>
+                            </div>
+                            <div class="stat-bar">
+                                <span>Mana: <span id="mana-knight">0</span>/<span id="max-mana-knight">0</span></span>
+                                <div class="bar-container">
+                                    <div class="mana-bar" id="mana-bar-knight"></div>
+                                </div>
+                            </div>
+                            <div class="stat-bar">
+                                <span>Level: <span id="level-knight">1</span> | EXP: <span id="exp-knight">0</span>/100</span>
+                                <div class="bar-container">
+                                    <div class="exp-bar" id="exp-bar-knight"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="character-stats" id="status-archer">
+                        <h4>Archer</h4>
+                        <div class="stat-bars">
+                            <div class="stat-bar">
+                                <span>HP: <span id="hp-archer">0</span>/<span id="max-hp-archer">0</span></span>
+                                <div class="bar-container">
+                                    <div class="hp-bar" id="hp-bar-archer"></div>
+                                </div>
+                            </div>
+                            <div class="stat-bar">
+                                <span>Mana: <span id="mana-archer">0</span>/<span id="max-mana-archer">0</span></span>
+                                <div class="bar-container">
+                                    <div class="mana-bar" id="mana-bar-archer"></div>
+                                </div>
+                            </div>
+                            <div class="stat-bar">
+                                <span>Level: <span id="level-archer">1</span> | EXP: <span id="exp-archer">0</span>/100</span>
+                                <div class="bar-container">
+                                    <div class="exp-bar" id="exp-bar-archer"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="character-stats" id="status-healer">
+                        <h4>Healer</h4>
+                        <div class="stat-bars">
+                            <div class="stat-bar">
+                                <span>HP: <span id="hp-healer">0</span>/<span id="max-hp-healer">0</span></span>
+                                <div class="bar-container">
+                                    <div class="hp-bar" id="hp-bar-healer"></div>
+                                </div>
+                            </div>
+                            <div class="stat-bar">
+                                <span>Mana: <span id="mana-healer">0</span>/<span id="max-mana-healer">0</span></span>
+                                <div class="bar-container">
+                                    <div class="mana-bar" id="mana-bar-healer"></div>
+                                </div>
+                            </div>
+                            <div class="stat-bar">
+                                <span>Level: <span id="level-healer">1</span> | EXP: <span id="exp-healer">0</span>/100</span>
+                                <div class="bar-container">
+                                    <div class="exp-bar" id="exp-bar-healer"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="status-section enemy-section">
+                    <h3>Musuh</h3>
+                    <div class="enemy-stats">
+                        <h4><span id="nama-musuh">-</span></h4>
+                        <div class="stat-bars">
+                            <div class="stat-bar">
+                                <span>HP: <span id="hp-musuh">0</span>/<span id="max-hp-musuh">0</span></span>
+                                <div class="bar-container">
+                                    <div class="hp-bar" id="hp-bar-musuh"></div>
+                                </div>
+                            </div>
+                            <div class="stat-bar">
+                                <span>Mana: <span id="mana-musuh">0</span>/<span id="max-mana-musuh">0</span></span>
+                                <div class="bar-container">
+                                    <div class="mana-bar" id="mana-bar-musuh"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="game-log-container">
+                <h3>Battle Log</h3>
+                <div id="game-log" class="game-log"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
